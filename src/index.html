@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Cagla Baran">
+    <meta name="description" content="Affordable Web Design For Small And Medium-sized Companies">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Cagla Baran</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+  </head>
+  <body>
+    <script src="js/main.js"></script>
+
+    <header>
+      <div class="top-right-menu-container small-grey">
+        <div class="top-right-element">Tool & Vehicle Rental</div>
+        <div class="top-right-element">Credit services</div>
+        <div class="top-right-element">Pro Services</div>
+        <div class="top-right-element">Order Status</div>
+        <div class="top-right-element">Customer Support</div>
+        <div class="top-right-element">Français</div>
+      </div>
+
+      <div class="small-screen-middle-menu-container">
+        <div class="select-store"> 
+          <img src="assets/location-icon.PNG"> Select a Store
+        </div>
+        <div class="account-basket-container">
+          <div class="my-account"> 
+            <img src="assets/my-account.PNG"/> 
+          </div>
+          <div class="cart">
+            <img src="assets/cart.PNG" /> 
+          </div>
+        </div>
+      </div>
+
+      <div class="middle-menu-container">
+        <div class="select-store"> 
+          <img src="assets/location-icon.PNG"> Select a Store
+        </div>
+        <div class="search-container">
+          <img class="height-inherit big-close-icon" src="assets/big-close-icon.PNG" onclick="closeSearchResult()"/>
+          <input id="searchInput" class="search-input-container" type="text" placeholder="Search over 130,000 products" onkeyup="openSearchResults()"/>
+          <div class="close" onclick="closeSearchResult()"></div>
+          <div class="search-icon"></div>
+
+          <div id="dropdown" class="dropdown">
+            <div class="dropdown-container">
+                <div class="category-keyword-container">
+                  <div id="search-input" class="padding-10 bold-gray"></div>
+                  <div id="categories-container" class="categories-container padding-20"></div>
+                  <div id="keywords-container" class="keywords-container padding-10">
+                  </div>
+                </div>
+                <div class="top-products-container padding-10">
+                  <div class="black-bold">Top Results for 
+                    <span id="search-input-result"></span>
+                  </div>
+                  <div class="images-container">
+                      <div class="top-product-container">
+                        <img class="image-size" src="undefined"/>
+                        <p> title</p>
+                      </div>
+                      <div class="top-product-container">
+                        <img class="image-size" src="undefined"/>
+                        <p> title</p>
+                      </div>
+                      <div class="top-product-container">
+                        <img class="image-size" src="undefined"/>
+                        <p> title</p>
+                      </div>
+                  </div>
+                    
+                </div>
+            </div>
+              
+          </div>
+        </div>
+        <div class="account-basket-container">
+          <div class="my-account"> 
+            <img src="assets/my-account.PNG"/> 
+            <div class="account-basket-text">
+                My Account
+            </div>
+          </div>
+          <div class="cart">
+            <img src="assets/cart.PNG" /> 
+            <div class="account-basket-text">
+                Cart
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-container">
+        <div class="menu-item">
+          <img src="assets/shop.PNG"/> 
+          <div>Shop by Department</div>
+        </div>
+        <div class="menu-item">
+          <img src="assets/room.PNG"/> 
+          <div>Shop by Room</div>
+        </div>
+        <div class="menu-item">
+          <img src="assets/ideas.PNG"/> 
+          <div>Ideas & How-to</div>
+        </div>
+        <div class="menu-item">
+          <img src="assets/installation.PNG"/> 
+          <div>Installation Services</div>
+        </div>
+        <div class="menu-item">
+          <img src="assets/value.PNG"/> 
+          <div>Value Centre</div>
+        </div>
+        <div class="menu-item">
+          <img src="assets/weekly.PNG"/> 
+          <div>Weekly Flyer</div>
+        </div>
+      </div>
+
+      <div class="buy-online-container">
+        BUY ONLINE PICK UP IN-STORE Available for in-store products &emsp; <u>Learn More</u> <span class="right-arrow-icon">></span>
+      </div>
+
+    </header>
+
+    <div class="main-container">
+      <section id="update-save">
+        <div class="info-text-container">
+          Enjoy new lower prices and special buys on hardwook, vinly, carpet and tile.
+          <div class="shop-flooring">Shop Flooring Deals</div>
+        </div>
+      </section>
+  
+      <div> Enjoy new lower prices and special buys on hardwook, vinly, carpet and tile.</div>
+      <h3 class="black-bold">Shop Flooring Deals <span style="color:red;"> > </span></h3>
+      
+
+      <section id="save-on-lighting">
+        <div class="light-image"></div>
+        <div class="light-info-container"> 
+          <h1>SAVE ON LIGHTING EVENT</h1>
+  
+            <div class="small-grey">Brighten up your home with greate savings on lighting.</div>
+            <h3 class="black-bold"> Shop All <span style="color:red;"> > </span></h3>
+          </div>
+      </section>
+    </div>
+    
+
+    <!-- 
+    font-awesome
+
+    user
+    shopping-cart
+
+    bars
+
+    lightbulb
+
+    tag
+
+// wrench screwdriver
+    <div>Icons made by <a href="https://www.flaticon.com/authors/elegant-themes" title="Elegant Themes">Elegant Themes</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+    //double seat
+
+    <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
+
+  </body>
+</html>
