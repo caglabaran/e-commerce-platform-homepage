@@ -1,8 +1,8 @@
 function openSearchResults() {
 
-    var x = document.getElementById("searchInput").value.replace(/ /g,'');
-    if(x!==""){
-        showData('categories-container', 'keywords-container');
+    var searchInput = document.getElementById("searchInput").value.replace(/ /g,'');
+    if(searchInput!=="" && searchInput.length>2){
+        showData(searchInput);
         document.getElementById("search-input").innerHTML = document.getElementById("searchInput").value;
         document.getElementById("search-input-result").innerHTML = '"' + document.getElementById("searchInput").value + '"';
         document.getElementById("dropdown").style.display="block";
@@ -12,19 +12,10 @@ function openSearchResults() {
 
 }
 
-function httpPostDeneme(){
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
-        }
-    };
-    xhttp.open("POST", "demo_post.asp", true);
-    xhttp.send();
-}
 
-function showData(categoryContainer, keywordContainer, topThreeProductContainer){
-
+function showData(searchInput, topThreeProductContainer){
+    var categoryContainer ='categories-container';
+    var keywordContainer = 'keywords-container';
     var suggestedTopCategories = getSuggestedTopCategories();
 
     const categoriesContainer = document.getElementById(categoryContainer);
@@ -58,20 +49,7 @@ function showData(categoryContainer, keywordContainer, topThreeProductContainer)
         keywordsContainer.appendChild(p);
     });
 
-
-    // var topThreeProducts = getTopThreeProductsWithImages();
-    // const topThreeProductsContainer = document.getElementById(topThreeProductContainer);
-    
-    // while (topThreeProductsContainer.firstChild) {
-    //     topThreeProductsContainer.removeChild(topThreeProductsContainer.firstChild);
-    // }
-    // topThreeProducts.forEach(product => {
-    //     const p = document.createElement('p');
-    //     p.textContent = product;
-
-    //     keywordsContainer.appendChild(p);
-    // });
-
+    getTopThreeProductsWithImages(searchInput);
     
 }
 
@@ -105,20 +83,56 @@ function getSuggestedKeywords(searchInput){
 }
 
 function getTopThreeProductsWithImages(searchInput){
-    let products = [
-        {
-            title:"Test Cap 3(Polyethylene)",
-            base64source:""
-        },
-        {
-            title:"Sodium Chloride Test Strips",
-            base64source:""
-        },
-        {
-            title:"Test Lead Set",
-            base64source:""
-        }
-    ];
+    var divIsVisible = false;
 
-    return products;
+    const topThreeProductsContainer = document.getElementById('images-container');
+
+    if (topThreeProductsContainer.style.display != "none") {
+        divIsVisible = true;
+    }
+
+    if(topThreeProductsContainer && divIsVisible){
+        while (topThreeProductsContainer.firstChild) {
+            topThreeProductsContainer.removeChild(topThreeProductsContainer.firstChild);
+        }
+    }
+
+    let apikey="gtjdf6yfeebwyw9pp9s6tmyd";
+    let url="http://localhost:5000/products/" + searchInput;
+    // let url="http://localhost:5000/suggestedKeywords/" + keyword;
+
+    var xhttp = new XMLHttpRequest();
+    
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            
+            var topThreeProducts = JSON.parse(xhttp.responseText);
+            if(topThreeProductsContainer && divIsVisible){
+                while (topThreeProductsContainer.firstChild) {
+                    topThreeProductsContainer.removeChild(topThreeProductsContainer.firstChild);
+                }
+                if(topThreeProducts && topThreeProducts.items){
+                    let i=0;
+                    let arrayLength = topThreeProducts.items.length>3 ? 3: topThreeProducts.items.length;
+                    for(i=0;i<arrayLength;i++) {
+                        const firstDiv = document.createElement('div');
+                        firstDiv.className="top-product-container";
+
+                        const firstImage = document.createElement('img');
+                        firstImage.class ="image-size";
+                        firstImage.src= topThreeProducts.items[i].thumbnailImage;
+                        const firstP = document.createElement('p');
+                        firstP.textContent = topThreeProducts.items[i].name;
+        
+                        firstDiv.appendChild(firstImage);
+                        firstDiv.appendChild(firstP);
+
+                        topThreeProductsContainer.appendChild(firstDiv);
+                    }
+                }
+            }
+        }
+    };
+    xhttp.open("GET", url);
+    xhttp.send();
 }

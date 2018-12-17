@@ -28,6 +28,17 @@ npm install
 
 NOTE:You will need [node.js](https://nodejs.org/) installed on your computer before you can run this command.
 
+### Run the nodejs server
+
+Open your terminal window and change into the source diectory where you have cloned or downloaded the repo to.
+
+Once all of the required node modules have been downloaded and installed, run the command
+
+```
+node server
+```
+
+This will open node js http server to solve CORS problem.
 
 ### Run the app
 
